@@ -24,16 +24,11 @@
     ".NETCoreApp,Version=v3.0": {
       "WebApi.Conversion4/1.0.0": {
         "dependencies": {
-          "ExcelDataReader": "3.6.0",
           "ExcelDataReader.DataSet": "3.6.0",
           "Microsoft.Azure.KeyVault": "3.0.4",
           "Microsoft.Azure.Services.AppAuthentication": "1.3.1",
           "Microsoft.Extensions.Configuration.AzureKeyVault": "3.0.1",
-          "Serilog.Extensions.Hosting": "3.0.0",
-          "Serilog.Settings.Configuration": "3.1.0",
           "Serilog.Sinks.AzureTableStorage": "4.0.0",
-          "Serilog.Sinks.Console": "3.1.1",
-          "Serilog.Sinks.File": "4.1.0",
           "WebApi.Common": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery.Reference": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.0.0.0",
@@ -145,7 +140,7 @@
           "Microsoft.Extensions.Logging.EventSource": "3.0.0.0",
           "Microsoft.Extensions.Logging.TraceSource": "3.0.0.0",
           "Microsoft.Extensions.ObjectPool.Reference": "3.0.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions.Reference": "3.0.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.0.0.0",
           "Microsoft.Extensions.Options.DataAnnotations": "3.0.0.0",
           "Microsoft.Extensions.Options.Reference": "3.0.0.0",
           "Microsoft.Extensions.WebEncoders.Reference": "3.0.0.0",
@@ -346,7 +341,7 @@
       "log4net/2.0.8": {
         "dependencies": {
           "System.AppContext": "4.3.0",
-          "System.Collections.NonGeneric": "4.3.0",
+          "System.Collections.NonGeneric": "4.0.1",
           "System.Console": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.Process": "4.3.0",
@@ -865,14 +860,6 @@
           "System.ComponentModel.Annotations": "4.5.0"
         }
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "3.0.1",
-          "Microsoft.Extensions.Configuration.Binder": "2.2.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Options": "2.2.0"
-        }
-      },
       "Microsoft.Extensions.Primitives/3.0.1": {
         "runtime": {
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
@@ -1196,72 +1183,33 @@
           "lib/netstandard2.0/SendGrid.dll": {}
         }
       },
-      "Serilog/2.8.0": {
+      "Serilog/2.3.0": {
         "dependencies": {
-          "System.Collections.NonGeneric": "4.3.0"
+          "Microsoft.CSharp": "4.5.0",
+          "System.Collections": "4.3.0",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Globalization": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Serilog.dll": {
+          "lib/netstandard1.3/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.8.0.0"
+            "fileVersion": "2.3.0.0"
           }
         },
         "compile": {
-          "lib/netstandard2.0/Serilog.dll": {}
-        }
-      },
-      "Serilog.Extensions.Hosting/3.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
-          "Serilog": "2.8.0",
-          "Serilog.Extensions.Logging": "3.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.Extensions.Hosting.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "3.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Serilog.Extensions.Hosting.dll": {}
-        }
-      },
-      "Serilog.Extensions.Logging/3.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Logging": "2.2.0",
-          "Serilog": "2.8.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "3.0.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {}
-        }
-      },
-      "Serilog.Settings.Configuration/3.1.0": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyModel": "2.1.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
-          "Serilog": "2.8.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {
-            "assemblyVersion": "3.1.0.0",
-            "fileVersion": "3.1.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {}
+          "lib/netstandard1.3/Serilog.dll": {}
         }
       },
       "Serilog.Sinks.AzureTableStorage/4.0.0": {
         "dependencies": {
-          "Serilog": "2.8.0",
+          "Serilog": "2.3.0",
           "Serilog.Sinks.PeriodicBatching": "2.1.0",
           "WindowsAzure.Storage": "9.3.3"
         },
@@ -1275,43 +1223,9 @@
           "lib/netstandard1.3/Serilog.Sinks.AzureTableStorage.dll": {}
         }
       },
-      "Serilog.Sinks.Console/3.1.1": {
-        "dependencies": {
-          "Serilog": "2.8.0",
-          "System.Console": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
-        },
-        "runtime": {
-          "lib/netcoreapp1.1/Serilog.Sinks.Console.dll": {
-            "assemblyVersion": "3.1.1.0",
-            "fileVersion": "3.1.1.0"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp1.1/Serilog.Sinks.Console.dll": {}
-        }
-      },
-      "Serilog.Sinks.File/4.1.0": {
-        "dependencies": {
-          "Serilog": "2.8.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Threading.Timer": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Serilog.Sinks.File.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.1.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Serilog.Sinks.File.dll": {}
-        }
-      },
       "Serilog.Sinks.PeriodicBatching/2.1.0": {
         "dependencies": {
-          "Serilog": "2.8.0",
+          "Serilog": "2.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Threading.Timer": "4.3.0"
         },
@@ -1364,7 +1278,7 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Collections.NonGeneric/4.3.0": {
+      "System.Collections.NonGeneric/4.0.1": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -2990,7 +2904,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions.Reference/3.0.0.0": {
+      "Microsoft.Extensions.Options.ConfigurationExtensions/3.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         },
@@ -4380,13 +4294,6 @@
       "path": "microsoft.extensions.options/2.2.0",
       "hashPath": "microsoft.extensions.options.2.2.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Y/lGICwO27fCkQRK3tZseVzFjZaxfGmui990E67sB4MuiPzdJHnJDS/BeYWrHShSSBgCl4KyKRx4ux686fftPg==",
-      "path": "microsoft.extensions.options.configurationextensions/2.0.0",
-      "hashPath": "microsoft.extensions.options.configurationextensions.2.0.0.nupkg.sha512"
-    },
     "Microsoft.Extensions.Primitives/3.0.1": {
       "type": "package",
       "serviceable": true,
@@ -4653,33 +4560,12 @@
       "path": "sendgrid/9.12.0",
       "hashPath": "sendgrid.9.12.0.nupkg.sha512"
     },
-    "Serilog/2.8.0": {
+    "Serilog/2.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zjuKXW5IQws43IHX7VY9nURsaCiBYh2kyJCWLJRSWrTsx/syBKHV8MibWe2A+QH3Er0AiwA+OJmO3DhFJDY1+A==",
-      "path": "serilog/2.8.0",
-      "hashPath": "serilog.2.8.0.nupkg.sha512"
-    },
-    "Serilog.Extensions.Hosting/3.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-UPo+FA2B7iIuFvABypsxy4Ss1YR9ukCgCivE6faEokN1w0/40Dh0WrVKeVhEM6mG+EAgpPIE8zQo7y7vWXxWng==",
-      "path": "serilog.extensions.hosting/3.0.0",
-      "hashPath": "serilog.extensions.hosting.3.0.0.nupkg.sha512"
-    },
-    "Serilog.Extensions.Logging/3.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-U0xbGoZuxJRjE3C5vlCfrf9a4xHTmbrCXKmaA14cHAqiT1Qir0rkV7Xss9GpPJR3MRYH19DFUUqZ9hvWeJrzdQ==",
-      "path": "serilog.extensions.logging/3.0.1",
-      "hashPath": "serilog.extensions.logging.3.0.1.nupkg.sha512"
-    },
-    "Serilog.Settings.Configuration/3.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BS+G1dhThTHBOYm8R21JNlR+Nh7ETAOlJuL1P6te1rOG98eV1vos5EyWRTGr0AbHgySxsGu1Q/evfFxS9+Gk1Q==",
-      "path": "serilog.settings.configuration/3.1.0",
-      "hashPath": "serilog.settings.configuration.3.1.0.nupkg.sha512"
+      "sha512": "sha512-JJMEqTUGe/bA4OEMefGd8W6si9oStSa3CF47dIHzkRKJHqFWFOW8D2aZTOW6VIgNLY2hzruQXhvp2tX0NVkgsw==",
+      "path": "serilog/2.3.0",
+      "hashPath": "serilog.2.3.0.nupkg.sha512"
     },
     "Serilog.Sinks.AzureTableStorage/4.0.0": {
       "type": "package",
@@ -4687,20 +4573,6 @@
       "sha512": "sha512-p1e/hhfuQ9IL39aqhHTRlc+Z2/yl924FgUB1vItqRCErSzjPGf8kWCu6GecrMJwCJjFM0vT6WEZ9TWtTHSdq0w==",
       "path": "serilog.sinks.azuretablestorage/4.0.0",
       "hashPath": "serilog.sinks.azuretablestorage.4.0.0.nupkg.sha512"
-    },
-    "Serilog.Sinks.Console/3.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-56mI5AqvyF/i/c2451nvV71kq370XOCE4Uu5qiaJ295sOhMb9q3BWwG7mWLOVSnmpWiq0SBT3SXfgRXGNP6vzA==",
-      "path": "serilog.sinks.console/3.1.1",
-      "hashPath": "serilog.sinks.console.3.1.1.nupkg.sha512"
-    },
-    "Serilog.Sinks.File/4.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-U0b34w+ZikbqWEZ3ui7BdzxY/19zwrdhLtI3o6tfmLdD3oXxg7n2TZJjwCCTlKPgRuYic9CBWfrZevbb70mTaw==",
-      "path": "serilog.sinks.file/4.1.0",
-      "hashPath": "serilog.sinks.file.4.1.0.nupkg.sha512"
     },
     "Serilog.Sinks.PeriodicBatching/2.1.0": {
       "type": "package",
@@ -4744,12 +4616,12 @@
       "path": "system.collections.immutable/1.2.0",
       "hashPath": "system.collections.immutable.1.2.0.nupkg.sha512"
     },
-    "System.Collections.NonGeneric/4.3.0": {
+    "System.Collections.NonGeneric/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
-      "path": "system.collections.nongeneric/4.3.0",
-      "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
+      "sha512": "sha512-hMxFT2RhhlffyCdKLDXjx8WEC5JfCvNozAZxCablAuFRH74SCV4AgzE8yJCh/73bFnEoZgJ9MJmkjQ0dJmnKqA==",
+      "path": "system.collections.nongeneric/4.0.1",
+      "hashPath": "system.collections.nongeneric.4.0.1.nupkg.sha512"
     },
     "System.ComponentModel.Annotations/4.5.0": {
       "type": "package",
@@ -5915,7 +5787,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions.Reference/3.0.0.0": {
+    "Microsoft.Extensions.Options.ConfigurationExtensions/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

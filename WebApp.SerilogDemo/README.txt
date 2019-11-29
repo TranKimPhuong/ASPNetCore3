@@ -1,7 +1,8 @@
 ﻿Follow to https://www.youtube.com/watch?v=_iryZxv8Rxw
 
-KHỞI TẠO LOG.LOGGER TRONG PROGRAME.CS
+AI ĐÓ NÓI LÀ NẾU CÓ MICROSERVICE THÌ NÊN DÙNG SERILOG
 
+KHỞI TẠO LOG.LOGGER TRONG PROGRAME.CS
 
 Serilog Demo for WebApp
 Read structure from appsetting.json: 
