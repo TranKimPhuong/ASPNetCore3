@@ -1,5 +1,4 @@
 ﻿Follow to https://www.youtube.com/watch?v=_iryZxv8Rxw
-and https://www.youtube.com/watch?v=oXNslgIXIbQ
 
 KHỞI TẠO LOG.LOGGER TRONG PROGRAME.CS
 
