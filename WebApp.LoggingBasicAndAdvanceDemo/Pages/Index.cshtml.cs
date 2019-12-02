@@ -41,7 +41,7 @@ namespace WebApp.LoggingBasicAndAdvanceDemo.Pages
             }
             catch (Exception ex)
             {
-                _logger.LogCritical("CRITICAL LOG: The server wnet down temporary at {Time}", DateTime.UtcNow);  //app is crashed, losing data, server get stuck ...
+                _logger.LogCritical(ex,"CRITICAL LOG: The server wnet down temporary at {Time}", DateTime.UtcNow);  //app is crashed, losing data, server get stuck ...
                 _logger.LogError("ERROR LOG AT {Time}", DateTime.UtcNow);
             }
         }

@@ -10,20 +10,17 @@
 	install ExcelDataReader
 			ExcelDataReader.DataSet
 
-1. Add keyVault vào Program.cs
+1. Add keyVault vào Program.cs => done
 	Install Microsoft.Azure.Services.AppAuthentication
 			Microsoft.Azure.KeyVault
 			Microsoft.Extensions.Configuration.AzureKeyVault
 
 	Issue: need to re-enter credentical_ lúc này ko lấy đc thông tin của KeyVault
 	Solved: Tool\options\Azure Services Authentication
-2. Add Bear Authentication 
 
-3. use Serilog
+2. Use Serilog => done
 	Install 
-			Serilog.Settings.Configuration
-			Serilog.Sinks.File 
+			Serilog.AspNetCore
 			Serilog.Sinks.AzureTableStorage
 
-			Serilog.Extensions.Hosting => để xài host.useSeriallog();
-			Serilog.Sinks.Console => ko bít coi chổ nào
+3. Add Bear Authentication

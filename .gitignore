@@ -1,3 +1,12 @@
 .vs
-/bin
-/obj
+WebApi.Common/bin
+WebApi.Common/obj
+WebApi.Conversion4/bin
+WebApi.Conversion4/obj
+WebApi.Conversion4/Logs
+WebApi.SerilogDemo/bin
+WebApi.SerilogDemo/obj
+WebApp.SerilogDemo/bin
+WebApp.SerilogDemo/obj
+WebApp.LoggingBasicAndAdvanceDemo/bin
+WebApp.LoggingBasicAndAdvanceDemo/obj

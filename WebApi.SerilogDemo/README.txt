@@ -23,3 +23,5 @@ Changes on
 	Program.cs
 	Startup.cs
 	appsetting.json
+
+TODO: WriteTo.AzureTableStorage coi sau bên WebApi.conversion4

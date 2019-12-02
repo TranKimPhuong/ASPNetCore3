@@ -4,6 +4,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Serilog;
 using System;
@@ -15,19 +16,34 @@ namespace WebApi.Conversion4
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();         
+            try
+            {
+                Log.Information("KP__APPLICATION STARTING UP");
+                host.Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "KP__THE APPLICATION FAILED TO START!");
+            }
+            finally
+            {
+                Log.Information("KP__TEST FINNALY");
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(ConfigConfiguration)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
         static void ConfigConfiguration(HostBuilderContext hostBuilderContext, IConfigurationBuilder configurationBuilder)
         {
-            ////if (context.HostingEnvironment.IsProduction())
+            ////if (hostBuilderContext.HostingEnvironment.IsProduction())
             ////{
             var builtConfig = configurationBuilder
                                     .SetBasePath(Directory.GetCurrentDirectory())
