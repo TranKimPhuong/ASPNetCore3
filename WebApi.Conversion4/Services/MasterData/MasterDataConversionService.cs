@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using log4net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using WebApi.Common.Helper;
 using WebApi.Common.KeyVault;
 using WebApi.Common.Models;
@@ -19,7 +19,7 @@ namespace WebApi.Conversion4.Services.MasterData
     {
         private readonly PsTool _psTool;
         private readonly IConfiguration _configuration;
-        public ILogger _logger;
+        private readonly ILogger _logger = Log.ForContext(typeof(MasterDataConversionService));
 
         internal MasterDataConversionService(PsTool psTool, IConfiguration configuration)
         {
@@ -58,13 +58,13 @@ namespace WebApi.Conversion4.Services.MasterData
                 if (errorList.Any())
                     return MessageResponse.error(errorList);
 
-                //var encryptedData = AESHelper.EncryptAES(sb.ToString(), _configuration["AESKeyBLOB"]);
-                var encryptedData = AESHelper.EncryptAES(sb.ToString(), Vault.Current.AESKeyBLOB);
+                var encryptedData = AESHelper.EncryptAES(sb, _configuration["AESKeyBLOB"]);
+                //var encryptedData = AESHelper.EncryptAES(sb.ToString(), Vault.Current.AESKeyBLOB);
                 return MessageResponse.ok(encryptedData);
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.Error(e.Message);
                 return MessageResponse.error(e.Message);
             }
 
@@ -76,18 +76,18 @@ namespace WebApi.Conversion4.Services.MasterData
 
             // Show all the key-value pairs.
             if (!string.IsNullOrEmpty(request.CaseAction))
-                _logger.LogInformation("CaseAction: " + request.CaseAction);
+                _logger.Information("CaseAction: " + request.CaseAction);
             if (!string.IsNullOrEmpty(request.ContainerName))
-                _logger.LogInformation("containerName: " + request.ContainerName);
+                _logger.Information("containerName: " + request.ContainerName);
             if (!string.IsNullOrEmpty(request.BlobName))
-                _logger.LogInformation("blobName: " + request.BlobName);
+                _logger.Information("blobName: " + request.BlobName);
             if (!string.IsNullOrEmpty(request.Decrypt))
-                _logger.LogInformation("decrypt: " + request.Decrypt);
+                _logger.Information("decrypt: " + request.Decrypt);
             if (!string.IsNullOrEmpty(request.SiteName))
-                _logger.LogInformation("SiteName: " + request.SiteName);
+                _logger.Information("SiteName: " + request.SiteName);
 
             isGetFromBlob = string.IsNullOrEmpty(request.isGetFromBlob) ? false : bool.Parse(request.isGetFromBlob);
-            _logger.LogInformation("isGetFromBlob : " + request.isGetFromBlob);
+            _logger.Information("isGetFromBlob : " + request.isGetFromBlob);
 
             var byteArr = GetByteFile(request.FileData, isGetFromBlob, request.ContainerName, request.BlobName);
             return byteArr;
@@ -101,20 +101,21 @@ namespace WebApi.Conversion4.Services.MasterData
                 var storageAccountNameShared = _configuration["StorageAccountNameShared"];
                 var storageAccountKeyShared = _configuration["StorageAccountKeyShared"];
                 var aESSecretKey = _configuration["AESSecretKey"];
-                var storageSharedConnectionString = $"DefaultEndpointsProtocol=https;AccountName={storageAccountNameShared};AccountKey={AESHelper.DescryptAES(storageAccountKeyShared, aESSecretKey)}";
+                var storageSharedConnectionString = $"DefaultEndpointsProtocol=https;AccountName={storageAccountNameShared};AccountKey={AESHelper.DecryptAES(storageAccountKeyShared, aESSecretKey)}";
 
                 return BlobHelper.DownloadFileToArrayByte(storageSharedConnectionString, containerName, blobName, decryptKey);
             }
-            // register để đọc nội dung
+            // register to read content of excel file
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             byte[] fileContent = null;
             using (var ms = new MemoryStream())
             {
                 fileData.CopyTo(ms);
                 fileContent = ms.ToArray();
             }
-            //Issue: ko decrypt đc, input file ko phải complete block 
-            return AESHelper.DescryptAES(fileContent, decryptKey);
+            //return AESHelper.DescryptAES(fileContent, decryptKey);
+            return AESHelper.DecryptAES(fileContent, decryptKey);
         }
     }
 }

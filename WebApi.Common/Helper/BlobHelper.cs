@@ -47,7 +47,7 @@ namespace WebApi.Common.Helper
                     if (ms != null)
                     {
                         aFile = ms.ToArray();
-                        if (!string.IsNullOrEmpty(decryptKey)) aFile = AESHelper.DescryptAES(aFile, decryptKey);
+                        if (!string.IsNullOrEmpty(decryptKey)) aFile = AESHelper.DecryptAES(aFile, decryptKey);
                     }                    
                 }
             }            
@@ -58,10 +58,14 @@ namespace WebApi.Common.Helper
         public static void UploadFile(string blobConnectionString, string blobContainerName, string blobName, string blobContentFilePath, string encryptKey = null)
         {
             CloudBlobContainer blobContainer = GetCloudBlobContainer(blobConnectionString, blobContainerName);
-            byte[] aBlobContent = File.ReadAllBytes(blobContentFilePath);
+            //byte[] aBlobContent = File.ReadAllBytes(blobContentFilePath);
+            StringBuilder aBlobContent = new StringBuilder(blobContentFilePath);
+            byte[] aOutputBlobContent = null;
             //encrypt with AESKey
-            if (!string.IsNullOrEmpty(encryptKey)) aBlobContent = AESHelper.EncryptAES(aBlobContent, encryptKey);
-            UploadFile(blobContainer, blobName, aBlobContent);
+            if (!string.IsNullOrEmpty(encryptKey))
+                aOutputBlobContent = AESHelper.EncryptAES(aBlobContent, encryptKey);
+
+            UploadFile(blobContainer, blobName, aOutputBlobContent);
         }
 
         public static void UploadFile(string blobConnectionString, string blobContainerName, string blobName, StringBuilder blobContent, string encryptKey = null)
@@ -72,21 +76,28 @@ namespace WebApi.Common.Helper
         public static void UploadFile(string blobConnectionString,string blobContainerName, string blobName, byte[] arrbytes, string encryptKey = null)
         {
             CloudBlobContainer blobContainer = GetCloudBlobContainer(blobConnectionString, blobContainerName);
+
+            StringBuilder BlobContent = new StringBuilder(arrbytes.ToString());
+            byte[] aOutputBlobContent = null;
             //encrypt with AESKey
-            if (!string.IsNullOrEmpty(encryptKey)) arrbytes = AESHelper.EncryptAES(arrbytes, encryptKey);
-            UploadFile(blobContainer, blobName, arrbytes);
+            if (!string.IsNullOrEmpty(encryptKey))
+                aOutputBlobContent = AESHelper.EncryptAES(BlobContent, encryptKey);
+
+            UploadFile(blobContainer, blobName, aOutputBlobContent);
 
         }
         public static void UploadFile(CloudBlobContainer blobContainer, string blobName, StringBuilder blobContent, string encryptKey = null)
         {
             string inputString = string.Empty;
             if (blobContent != null) inputString = blobContent.ToString();
-            byte[] aBlobContent = Encoding.UTF8.GetBytes(inputString);
-
+            //byte[] aBlobContent = Encoding.UTF8.GetBytes(inputString);
+            StringBuilder aBlobContent = new StringBuilder(inputString);
             //encrypt with AESKey
-            if (!string.IsNullOrEmpty(encryptKey)) aBlobContent = AESHelper.EncryptAES(aBlobContent, encryptKey);
+            byte[] aOutputBlobContent = null;
+            if (!string.IsNullOrEmpty(encryptKey))
+                aOutputBlobContent = AESHelper.EncryptAES(aBlobContent, encryptKey);
 
-            UploadFile(blobContainer, blobName, aBlobContent);
+            UploadFile(blobContainer, blobName, aOutputBlobContent);
         }
         
         public static void UploadFile(CloudBlobContainer blobContainer, string blobName, byte[] aBlobContent)

@@ -133,7 +133,7 @@ namespace WebApi.Common.KeyVault
             public string StorageAccountKeyShared { get; set; }
             [NonVault]
             public string StorageSharedConnectionString
-        => $"DefaultEndpointsProtocol=https;AccountName={StorageAccountNameShared};AccountKey={AESHelper.DescryptAES(StorageAccountKeyShared, AESSecretKey)}";
+        => $"DefaultEndpointsProtocol=https;AccountName={StorageAccountNameShared};AccountKey={AESHelper.DecryptAES(StorageAccountKeyShared, AESSecretKey)}";
         }
     }
 }

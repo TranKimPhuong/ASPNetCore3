@@ -23,4 +23,9 @@
 			Serilog.AspNetCore
 			Serilog.Sinks.AzureTableStorage
 
-3. Add Bear Authentication
+3. Add Bear Authentication	=> add jwtBaerer ???????
+	old way : Compare bear token from postman and in webconfig
+	=> master chưa xài
+
+4. Connect to SQL server on Azure
+	=> xài khi create vendor?

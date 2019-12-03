@@ -27,7 +27,7 @@ namespace WebApi.Conversion4
         {
             #region Initalize Log
             var logConnectionString = _configuration["LogStorageConnectionString"];
-            //logConnectionString = "localhost";
+            logConnectionString = "localhost";
             var now = DateTime.UtcNow;
 
             var logger = new LoggerConfiguration();

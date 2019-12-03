@@ -98,7 +98,7 @@ namespace WebApi.Common.KeyVault
                 SharedApiVCardWebForWexEndpoint = _configuration["SharedApiVCardWebForWexEndpoint"];
                 SharedApiVCardWebForWexKey = _configuration["SharedApiVCardWebForWexKey"];
                 StorageAccountKeyShared = _configuration["StorageAccountKeyShared"];
-                StorageSharedConnectionString = $"DefaultEndpointsProtocol=https;AccountName={StorageAccountNameShared};AccountKey={AESHelper.DescryptAES(StorageAccountKeyShared, AESSecretKey)}";
+                StorageSharedConnectionString = $"DefaultEndpointsProtocol=https;AccountName={StorageAccountNameShared};AccountKey={AESHelper.DecryptAES(StorageAccountKeyShared, AESSecretKey)}";
 
             }
             public string AESSecretKey { get; set; }

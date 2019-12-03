@@ -16,7 +16,7 @@ namespace WebApi.Conversion4.Controllers
             _configuration = configuration;
         }
 
-        //POST: api/MasterDataConversion
+        //POST: api/MasterDataConversion/Import
         [HttpPost]
         public ActionResult<MessageResponse> Import([FromForm] MasterConversionRequest request)
         {

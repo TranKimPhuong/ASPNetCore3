@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Conversion4", "WebAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Common", "WebApi.Common\WebApi.Common.csproj", "{278034DF-9FF2-456E-B33D-EE757258402D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.SerilogDemo", "WebApp.SerilogDemo\WebApp.SerilogDemo.csproj", "{41ECFE47-9D02-4A76-A299-8005A224B23C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.SerilogDemo", "WebApp.SerilogDemo\WebApp.SerilogDemo.csproj", "{41ECFE47-9D02-4A76-A299-8005A224B23C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.SerilogDemo", "WebApi.SerilogDemo\WebApi.SerilogDemo.csproj", "{500BDC36-50F0-42CA-A91B-DFA404B4AD96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.SerilogDemo", "WebApi.SerilogDemo\WebApi.SerilogDemo.csproj", "{500BDC36-50F0-42CA-A91B-DFA404B4AD96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.LoggingBasicAndAdvanceDemo", "WebApp.LoggingBasicAndAdvanceDemo\WebApp.LoggingBasicAndAdvanceDemo.csproj", "{C51779B0-3CF9-476E-B33A-C59919385F21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.LoggingBasicAndAdvanceDemo", "WebApp.LoggingBasicAndAdvanceDemo\WebApp.LoggingBasicAndAdvanceDemo.csproj", "{C51779B0-3CF9-476E-B33A-C59919385F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,62 +10,69 @@ namespace WebApi.Common.Helper
 {
     public class AESHelper
     {
-        [Obsolete("Remove after key vault migration complete for all project.")]
-        public static string AESKey { get; set; }
-        [Obsolete("Remove after key vault migration complete for all project.")]
-        public static string AESKeyACH { get; set; }  //Key for encypt ach content file
 
-        public static string DescryptAES(string encryptStr, string key)
+        public static string DecryptAES(string encryptStr, string key)
         {
             var encryptedBytes = Convert.FromBase64String(encryptStr);
-            var result = Encoding.UTF8.GetString(Decrypt(encryptedBytes, GetRijndaelManaged(key)));
+            var result = Encoding.UTF8.GetString(DecryptAES(encryptedBytes, key));
             return result;
         }
 
         public static string EncryptAES(string content, string key)
         {
-            var plainBytes = Encoding.UTF8.GetBytes(content);
-            var result = Convert.ToBase64String(Encrypt(plainBytes, GetRijndaelManaged(key)));
+            var plainBytes = new StringBuilder(content);
+            var result = Convert.ToBase64String(EncryptAES(plainBytes, key));
             return result;
         }
-
-        public static byte[] EncryptAES(byte[] inputContent, string key)
+        // follow to https://www.c-sharpcorner.com/article/aes-encryption-in-c-sharp/
+        // and https://jonlabelle.com/snippets/view/csharp/encrypt-and-decrypt-data-in-dotnet-core
+        public static byte[] EncryptAES(StringBuilder inputContent, string secretKey)
         {
-            return Encrypt(inputContent, GetRijndaelManaged(key));
-        }
-
-        public static byte[] DescryptAES(byte[] inputContent, string key)
-        {
-            return Decrypt(inputContent, GetRijndaelManaged(key));
-        }
-
-
-        private static RijndaelManaged GetRijndaelManaged(String secretKey)
-        {
-            var keyBytes = new byte[16];
-            var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
-            Array.Copy(secretKeyBytes, keyBytes, Math.Min(keyBytes.Length, secretKeyBytes.Length));
-            return new RijndaelManaged
+            byte[] encrypted;
+    
+            using (AesManaged aes = new AesManaged())
             {
-                Mode = CipherMode.CBC,
-                Padding = PaddingMode.PKCS7,
-                KeySize = 128,
-                BlockSize = 128,
-                Key = keyBytes,
-                IV = keyBytes
-            };
+                var keyBytes = new byte[16];
+                var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
+                Array.Copy(secretKeyBytes, keyBytes, Math.Min(keyBytes.Length, secretKeyBytes.Length));
+  
+                ICryptoTransform encryptor = aes.CreateEncryptor(keyBytes, keyBytes);
+   
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    // Create crypto stream using the CryptoStream class. This class is the key to encryption    
+                    // and encrypts and decrypts data from any given stream. In this case, we will pass a memory stream    
+                    // to encrypt    
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
+                    { 
+                        using (StreamWriter sw = new StreamWriter(cs))
+                            sw.Write(inputContent);
+                        encrypted = ms.ToArray();
+                    }
+                }
+            }
+            return encrypted;
         }
 
-        private static byte[] Encrypt(byte[] plainBytes, RijndaelManaged rijndaelManaged)
+        public static byte[] DecryptAES(byte[] inputContent, string secretKey)
         {
-            return rijndaelManaged.CreateEncryptor()
-                .TransformFinalBlock(plainBytes, 0, plainBytes.Length);
-        }
+            using (AesManaged aes = new AesManaged())
+            {
+                var keyBytes = new byte[16];
+                var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
+                Array.Copy(secretKeyBytes, keyBytes, Math.Min(keyBytes.Length, secretKeyBytes.Length));
 
-        private static byte[] Decrypt(byte[] encryptedData, RijndaelManaged rijndaelManaged)
-        {
-            return rijndaelManaged.CreateDecryptor()
-                .TransformFinalBlock(encryptedData, 0, encryptedData.Length);
+                ICryptoTransform decryptor = aes.CreateDecryptor(keyBytes, keyBytes);
+  
+                using (MemoryStream ms = new MemoryStream(inputContent))
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                    {
+                        return ms.ToArray();
+                    }
+                }
+            }
+
         }
     }
 }
