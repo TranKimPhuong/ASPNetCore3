@@ -96,6 +96,7 @@ namespace WebApi.Conversion4.Services.MasterData
         private byte[] GetByteFile(IFormFile fileData, bool isGetFromBlob, string containerName, string blobName)
         {
             var decryptKey = _configuration["AESKeyBLOB"];
+            // tại sao bên đây có case này còn bên payment thì default là down luon?
             if (isGetFromBlob)
             {
                 var storageAccountNameShared = _configuration["StorageAccountNameShared"];

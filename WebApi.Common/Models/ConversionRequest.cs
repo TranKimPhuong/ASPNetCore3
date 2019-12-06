@@ -22,6 +22,6 @@ namespace WebApi.Common.Models
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public String prefixPayeeID { get; set; }
 
-        public IFormFile FileData { get; set; }
+        //public IFormFile FileData { get; set; }
     }
 }
