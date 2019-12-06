@@ -4,8 +4,13 @@ namespace WebApi.SerilogDemo.Test
 {
     public class Apps
     {
-        private readonly static ILogger log = Log.ForContext(typeof(Apps));
+        // standard way
+        //private readonly static ILogger log = Log.ForContext(typeof(Apps));
 
+        // advance way, overwrite SourceContext
+        private readonly static ILogger log = Log.ForContext("SourceContext", "TestLogonAnotherClass");
+
+       
         public static void Run()
         {
             log.Information("Testing 123");

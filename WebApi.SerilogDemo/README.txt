@@ -4,7 +4,7 @@ and https://stackoverflow.com/questions/57272654/inject-serilogs-ilogger-interfa
 AI ĐÓ NÓI LÀ NẾU CÓ MICROSERVICE THÌ NÊN DÙNG SERILOG
 
 KHỞI TẠO LOG.LOGGER TRONG STARTUP.CS
-AND SỬ DỤNG SERIAL LOG IN ANOTHER CLASS
+AND SỬ DỤNG SERIAL LOG WITH custom CATEGORYNAME IN ANOTHER CLASS
 
 Serilog Demo for WebApI
 Read structure from appsetting.json: 
