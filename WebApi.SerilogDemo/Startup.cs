@@ -24,6 +24,9 @@ namespace WebApi.SerilogDemo
             Log.Logger = logger;
             // or services.AddSingleton<Serilog.ILogger>(logger);
             // or services.AddSingleton(Log.Logger);
+
+            // follow to https://stackoverflow.com/questions/39231951/how-do-i-access-configuration-in-any-class-in-asp-net-core
+            TestConfigManager.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
