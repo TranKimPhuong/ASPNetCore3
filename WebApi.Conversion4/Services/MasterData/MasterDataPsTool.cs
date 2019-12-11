@@ -42,7 +42,6 @@ namespace WebApi.Conversion4.Services.MasterData
         }
         protected override StringBuilder ConvertDocumentsToStandardFile()
         {
-            //throw new NotImplementedException();
             var res = new StringBuilder();
             try
             {
@@ -78,7 +77,6 @@ namespace WebApi.Conversion4.Services.MasterData
 
         protected override List<Page> FillData(byte[] inputFile)
         {
-            //return base.FillData(inputFile);
             var pages = new List<Page>();
             var page = new Page
             {

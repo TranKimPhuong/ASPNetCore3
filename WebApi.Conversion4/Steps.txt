@@ -10,22 +10,55 @@
 	install ExcelDataReader
 			ExcelDataReader.DataSet
 
+	PAYMENT
+		PsTool.cs xài WebApi.Common.Models.ConversionRequest (KO SAO)
+		PaymentDocument
+		PaymentDocumentDetailLine
+		PaymentDocumentHeader
+		=> using Web.Common.Helper
+
 1. Add keyVault vào Program.cs => done
 	Install Microsoft.Azure.Services.AppAuthentication
 			Microsoft.Azure.KeyVault
 			Microsoft.Extensions.Configuration.AzureKeyVault
 
-	Issue: need to re-enter credentical_ lúc này ko lấy đc thông tin của KeyVault
+	Issue1: need to re-enter credentical_ lúc này ko lấy đc thông tin của KeyVault
 	Solved: Tool\options\Azure Services Authentication
 
-2. Use Serilog => done
+	Issue2: làm sao get 1 insatnce for DBConnectionServerName, ServiceBusAccessKey, 
+			ServiceBusAccessKeyName, ServiceBusNamespace, StorageAccountKey, StorageAccountName
+
+	do GetVaultKeyName() trong VaultBase.cs  
+	=> DA DONE TREN NET CORE 3, keyvault and core keyvault
+
+
+2. Use Serilog => partial, phan log to Azure chua test
 	Install 
 			Serilog.AspNetCore
 			Serilog.Sinks.AzureTableStorage
 
-3. Add Bear Authentication	=> add jwtBaerer ???????
+3. Create update vendor/export payment file + call IConfiguration từ another class
+=> đang làm cai nay tai sao xai basedao?
+
+
+
+
+DA RUN DC MASTER AND PAYMENT, 
+chưa call đc paymentAPI from postman
+chưa apply required fields for standard files
+
+
+
+
+
+
+3. Get files from Clound Elements
+=> dang nghien cuu
+
+
+4. Add Bear Authentication	=> add jwtBaerer ???????
 	old way : Compare bear token from postman and in webconfig
 	=> master chưa xài
 
-4. Connect to SQL server on Azure
+5. Connect to SQL server on Azure
 	=> xài khi create vendor?

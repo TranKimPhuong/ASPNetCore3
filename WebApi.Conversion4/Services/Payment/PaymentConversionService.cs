@@ -4,8 +4,8 @@ using log4net;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using WebApi.Common.Helper;
-using WebApi.Common.KeyVault;
 using WebApi.Common.Models;
+using WebApi.Conversion4.Models.Data;
 using WebApi.Conversion4.Models.Data.Provider;
 
 namespace WebApi.Conversion4.Services.Payment
@@ -14,13 +14,11 @@ namespace WebApi.Conversion4.Services.Payment
     {
         private readonly PsTool _psTool;
         private readonly ILogger _logger;
-        private readonly IConfiguration _configuration;
 
-        internal PaymentConversionService(PsTool psTool, IConfiguration configuration)
+        internal PaymentConversionService(PsTool psTool)
         {
             _psTool = psTool;
             _logger = Log.ForContext(typeof(PaymentConversionService));
-            _configuration = configuration;
         }
 
         internal MessageResponse ProcessRequest(ConversionRequest request)
@@ -30,8 +28,8 @@ namespace WebApi.Conversion4.Services.Payment
                 return MessageResponse.info(errorMsg);
             try
             {
-                var storageConnString = _configuration["StorageConnectionString"];
-                var decryptKey = _configuration["AESKeyBLOB"];
+                var storageConnString = AzureKeyVaultProvider.StorageConnectionString;
+                var decryptKey = AzureKeyVaultProvider.AESKeyBLOB;
 
                 //download file
                 var downloadResult = DownloadConversionFiles(request, storageConnString, decryptKey);

@@ -10,17 +10,11 @@ namespace WebApi.Conversion4.Controllers
     [Route("api/MasterDataConversion/Import")]
     public class MasterDataConversionController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-        public MasterDataConversionController(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         //POST: api/MasterDataConversion/Import
         [HttpPost]
         public ActionResult<MessageResponse> Import([FromForm] MasterConversionRequest request)
         {
-            var service = new MasterDataConversionService(new MasterDataPsTool(), _configuration);
+            var service = new MasterDataConversionService(new MasterDataPsTool());
             return service.ProcessHttpRequest(request);
             
         }

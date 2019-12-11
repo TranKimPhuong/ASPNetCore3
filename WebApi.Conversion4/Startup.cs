@@ -10,6 +10,9 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using WebApi.Conversion4.Models.Data;
+using WebApi.Conversion4.Services.MasterData;
+using WebApi.Conversion4.Services.Payment;
 
 namespace WebApi.Conversion4
 {
@@ -18,6 +21,9 @@ namespace WebApi.Conversion4
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+            // follow to https://stackoverflow.com/questions/39231951/how-do-i-access-configuration-in-any-class-in-asp-net-core
+            // advance way
+            ConversionConfig.Configuration = configuration;
         }
 
         public IConfiguration _configuration { get; set; }
@@ -26,7 +32,7 @@ namespace WebApi.Conversion4
         public void ConfigureServices(IServiceCollection services)
         {
             #region Initalize Log
-            var logConnectionString = _configuration["LogStorageConnectionString"];
+            var logConnectionString = AzureKeyVaultProvider.LogStorageConnectionString;
             logConnectionString = "localhost";
             var now = DateTime.UtcNow;
 
@@ -35,7 +41,7 @@ namespace WebApi.Conversion4
             {
                 string projectDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
                 var path = Path.Combine(projectDir, "Logs", string.Concat(logConnectionString, now.ToString("'_'yyyyMMdd'.log'")));
-                logger.WriteTo.File(path, outputTemplate: "[{Timestamp:G} {Level:u3] {Message}{NewLine:1}{Exception:1}");
+                logger.WriteTo.File(path, outputTemplate: "[{Timestamp:G} {Level:u3}] [{SourceContext}] {Message}{NewLine:1}{Exception:1}");
             }
             else
             {// chưa test
@@ -89,7 +95,28 @@ namespace WebApi.Conversion4
             {
                 endpoints.MapControllers();
             });
+
+            //Debug();
         }
 
+        public void Debug()
+        {
+            //var inputpath = @"E:\SaaS_ko up\Input for debug code\city of mount juliet\CityofMountJuliet_Vendors.xlsx";
+            //var inputfile = File.ReadAllBytes(inputpath);
+            //var conversion = new MasterDataPsTool();
+            //// register to read content of excel file
+            //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            //var result = conversion.ProcessDataFile(inputfile);
+            //File.WriteAllText(@"E:\SaaS_ko up\Input for debug code\city of mount juliet\Master.txt", result.ToString());
+
+            var inputpath = @"E:\SaaS_ko up\Input for debug code\city of mount juliet\Check Run 5-21-19";
+            var inputfile = File.ReadAllBytes(inputpath);
+            var conversion = new PaymentPsTool();
+            // register to read content of excel file
+            //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var result = conversion.ProcessDataFile(inputfile);
+            File.WriteAllText(@"E:\SaaS_ko up\Input for debug code\city of mount juliet\Payment.txt", result.ToString());
+
+        }
     }
 }

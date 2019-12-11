@@ -14,7 +14,7 @@ namespace WebApi.SerilogDemo.Test
         public static void Run()
         {
             // way 1: chon cách nay2 đi cho nó dễ hiểu
-            var ttt = TestConfigManager.Configuration["Test:name"];
+            //var ttt = TestConfigManager.Configuration["Test:name"];
             var ttt1 = TestConfigManager.GetValue("Test:name");
 
             //way 2

@@ -14,17 +14,11 @@ namespace WebApi.Conversion4.Controllers
     [Route("api/PaymentConversion/Import")]
     public class PaymentConversionController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-
-        public PaymentConversionController(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
         // POST: api/PaymentConversion/Import
         [HttpPost]
         public MessageResponse PaymentImport([FromForm] ConversionRequest request)
         {
-            PaymentConversionService service = new PaymentConversionService(new PaymentPsTool(), _configuration);
+            PaymentConversionService service = new PaymentConversionService(new PaymentPsTool());
             return service.ProcessRequest(request);
         }
     }

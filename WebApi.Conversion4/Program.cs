@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Serilog;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace WebApi.Conversion4
 {
@@ -45,13 +46,28 @@ namespace WebApi.Conversion4
         {
             ////if (hostBuilderContext.HostingEnvironment.IsProduction())
             ////{
+            
             var builtConfig = configurationBuilder
-                                    .SetBasePath(Directory.GetCurrentDirectory())
-                                    .AddJsonFile("appsettings.json", false, true)
-                                    .AddEnvironmentVariables()
-                                    .Build();
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", false, true)
+            .AddEnvironmentVariables()
+            .Build();
 
-            var azureServiceTokenProvider = new AzureServiceTokenProvider();
+            var keyVaultAddress = $"https://{builtConfig["azureKeyVault:KeyVaultName"]}.vault.azure.net/";
+
+            configurationBuilder.AddAzureKeyVault(keyVaultAddress,
+                                InitKeyVault(keyVaultAddress,builtConfig["azureKeyVault:ClientId"], builtConfig["azureKeyVault:ClientSecret"]),
+                                new DefaultKeyVaultSecretManager());
+
+            var keyCoreVaultAddress = $"https://{builtConfig["azureKeyVault:Core:KeyVaultName"]}.vault.azure.net/";
+            configurationBuilder.AddAzureKeyVault(keyCoreVaultAddress,
+                                InitKeyVault(keyCoreVaultAddress, builtConfig["azureKeyVault:Core:ClientId"], builtConfig["azureKeyVault:Core:ClientSecret"]),
+                                new DefaultKeyVaultSecretManager());
+            //}
+        }
+        public static KeyVaultClient InitKeyVault(string keyVaultAddress,string clientID, string clientSecret)
+        {
+            //var azureServiceTokenProvider = new AzureServiceTokenProvider();
             // way 1 , follow this https://docs.microsoft.com/en-us/aspnet/core/security/key-vault-configuration?view=aspnetcore-3.0#secret-storage-in-the-production-environment-with-azure-key-vault
             //    var keyVaultClient = new KeyVaultClient(
             //        new KeyVaultClient.AuthenticationCallback(
@@ -59,11 +75,15 @@ namespace WebApi.Conversion4
 
 
             //way 2 , follow to https://c-sharx.net/read-secrets-from-azure-key-vault-in-a-net-core-console-app
-            var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(
-                        async (string authority, string resource, string scope) => {
+            var authenticationCallBack = new KeyVaultClient.AuthenticationCallback(
+                        // get token
+                        async (string authority, string resource, string scope) =>
+                        {
+                            //GetCredential()
+                            var credential = new ClientCredential(clientID, clientSecret);
+
                             var authContext = new AuthenticationContext(authority);
-                            var credential = new ClientCredential(builtConfig["azureKeyVault:ClientId"],
-                                                                  builtConfig["azureKeyVault:ClientSecret"]);
+
                             AuthenticationResult result = await authContext.AcquireTokenAsync(resource, credential);
                             if (result == null)
                             {
@@ -71,16 +91,14 @@ namespace WebApi.Conversion4
                             }
                             return result.AccessToken;
                         }
-                      ));
+                      );
+
+            var keyVaultClient = new KeyVaultClient(authenticationCallBack);
             // Calling GetSecretAsync will trigger the authentication code above and eventually
             // retrieve the secret which we can then read.
-            var secretBundle = keyVaultClient.GetSecretAsync($"https://{builtConfig["azureKeyVault:KeyVaultName"]}.vault.azure.net/", "secretkey");
+            var secretBundle = keyVaultClient.GetSecretAsync(keyVaultAddress, "secretKey");
 
-            configurationBuilder.AddAzureKeyVault(
-                                $"https://{builtConfig["azureKeyVault:KeyVaultName"]}.vault.azure.net/",
-                                keyVaultClient,
-                                new DefaultKeyVaultSecretManager());
-            //}
+            return keyVaultClient;
         }
     }
 }

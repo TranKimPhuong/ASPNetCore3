@@ -14,7 +14,9 @@ namespace WebApi.Conversion4.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        //Standard way to use IConfiguration in another class
         private readonly IConfiguration _configuration;
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
