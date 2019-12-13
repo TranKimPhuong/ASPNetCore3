@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using WebApi.Conversion4.Models.Data.Maps;
 using WebApi.Conversion4.Models.Data.Provider;
-using WebApi.Conversion4.Models.Library;
+using WebApi.Conversion4.Ultilities.Library;
 
 namespace WebApi.Conversion4.Services.Payment
 {
@@ -19,6 +19,26 @@ namespace WebApi.Conversion4.Services.Payment
         protected override Document CreateNewDocument()
         {
             return new PaymentDocument(new PaymentDocumentHeader());
+        }
+
+        protected override void ProcessBeforeConvertDocumentsToStandardFile()
+        {
+            #region Createvendorfrompayment
+            var error = string.Empty;
+            var module = new CreateVendorsFromPayments(this.Documents.Select(s => s.Header as PaymentDocumentHeader));
+            if (!module.ProcessCreateVendors(out error))
+            {
+                throw new Exception(error);
+            }
+            #endregion
+
+            //#region Omit leading zero
+            //foreach (var doc in Documents)
+            //{
+            //    var header = doc.Header as PaymentDocumentHeader;
+            //    header.PaymentNumber = header.PaymentNumber.TrimStart('0');
+            //}
+            //#endregion
         }
         protected override StringBuilder BuildStandardFileHeader()
         {

@@ -1,7 +1,7 @@
-﻿using WebApi.Common.Helper;
-using WebApi.Common.KeyVault.Attributes;
+﻿using WebApi.Conversion4.Ultilities.Config;
+using WebApi.Conversion4.Ultilities.Helper;
 
-namespace WebApi.Conversion4.Models.Data
+namespace WebApi.Conversion4.Ultilities.KeyVault
 {
     public class AzureKeyVaultProvider
     {

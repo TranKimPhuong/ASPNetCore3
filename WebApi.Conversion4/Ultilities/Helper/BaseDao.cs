@@ -1,16 +1,18 @@
-﻿using log4net;
+﻿using Microsoft.Data.SqlClient;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using WebApi.Conversion4.Ultilities.Config;
 
-namespace WebApi.Common.Helper
+namespace WebApi.Conversion4.Ultilities.Helper
 {
     public class BaseDao : IDisposable
     {
-        static ILog LOGGER = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        readonly static ILogger LOGGER = Log.ForContext(typeof(BaseDao));
+
         private static BindingFlags BINDING_ATTR = (BindingFlags.DeclaredOnly
                                                 | BindingFlags.Instance
                                                 | BindingFlags.Public
@@ -357,7 +359,7 @@ namespace WebApi.Common.Helper
             }
             catch (Exception ex)
             {
-                LOGGER.Error(ex);
+                LOGGER.Error(ex.Message);
                 param.Value = DBNull.Value;
             }
 
@@ -424,7 +426,7 @@ namespace WebApi.Common.Helper
             }
             catch (Exception ex)
             {
-                LOGGER.Error(ex);
+                LOGGER.Error(ex.Message);
             }
 
             return param;

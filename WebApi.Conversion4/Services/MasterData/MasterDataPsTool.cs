@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using WebApi.Conversion4.Models.Data.Maps;
 using WebApi.Conversion4.Models.Data.Provider;
-using WebApi.Conversion4.Models.Library;
-using WebApi.Common.Helper;
+using WebApi.Conversion4.Ultilities.Library;
+using WebApi.Conversion4.Ultilities.Helper;
 
 namespace WebApi.Conversion4.Services.MasterData
 {

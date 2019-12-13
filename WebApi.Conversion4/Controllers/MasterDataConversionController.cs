@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using WebApi.Common.Models;
+using WebApi.Conversion4.Models;
 using WebApi.Conversion4.Services.MasterData;
 
 namespace WebApi.Conversion4.Controllers

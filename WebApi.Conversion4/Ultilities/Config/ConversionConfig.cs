@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 
-namespace WebApi.Conversion4.Models.Data
+namespace WebApi.Conversion4.Ultilities.Config
 {
     public static class ConversionConfig
     {

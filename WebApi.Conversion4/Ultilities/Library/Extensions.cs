@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using ExcelDataReader;
 
-namespace WebApi.Conversion4.Models.Library
+namespace WebApi.Conversion4.Ultilities.Library
 {
     internal static class StringExtensions
     {

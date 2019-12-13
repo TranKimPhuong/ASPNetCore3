@@ -1,15 +1,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Serilog;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace WebApi.Conversion4
 {
@@ -20,16 +17,16 @@ namespace WebApi.Conversion4
             var host = CreateHostBuilder(args).Build();         
             try
             {
-                Log.Information("KP__APPLICATION STARTING UP");
+                Log.Information("KP__APPLICATION STARTING UP AT {Time}", DateTime.UtcNow);
                 host.Run();
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "KP__THE APPLICATION FAILED TO START!");
+                Log.Fatal(ex, "KP__THE APPLICATION FAILED TO START! {Time}", DateTime.UtcNow);
             }
             finally
             {
-                Log.Information("KP__TEST FINNALY");
+                Log.Information("KP__TEST FINNALY  {Time}", DateTime.UtcNow);
                 Log.CloseAndFlush();
             }
         }
@@ -52,17 +49,23 @@ namespace WebApi.Conversion4
             .AddJsonFile("appsettings.json", false, true)
             .AddEnvironmentVariables()
             .Build();
+            if (!string.IsNullOrEmpty(builtConfig["azureKeyVault:KeyVaultName"]))
+            {
+                var keyVaultAddress = $"https://{builtConfig["azureKeyVault:KeyVaultName"]}.vault.azure.net/";
+                if (!string.IsNullOrEmpty(keyVaultAddress))
+                    configurationBuilder.AddAzureKeyVault(keyVaultAddress,
+                                    InitKeyVault(keyVaultAddress, builtConfig["azureKeyVault:ClientId"], builtConfig["azureKeyVault:ClientSecret"]),
+                                    new DefaultKeyVaultSecretManager());
+            }
 
-            var keyVaultAddress = $"https://{builtConfig["azureKeyVault:KeyVaultName"]}.vault.azure.net/";
+            if (!string.IsNullOrEmpty(builtConfig["azureKeyVault:Core:KeyVaultName"]))
+            {
+                var keyCoreVaultAddress = $"https://{builtConfig["azureKeyVault:Core:KeyVaultName"]}.vault.azure.net/";
 
-            configurationBuilder.AddAzureKeyVault(keyVaultAddress,
-                                InitKeyVault(keyVaultAddress,builtConfig["azureKeyVault:ClientId"], builtConfig["azureKeyVault:ClientSecret"]),
-                                new DefaultKeyVaultSecretManager());
-
-            var keyCoreVaultAddress = $"https://{builtConfig["azureKeyVault:Core:KeyVaultName"]}.vault.azure.net/";
-            configurationBuilder.AddAzureKeyVault(keyCoreVaultAddress,
-                                InitKeyVault(keyCoreVaultAddress, builtConfig["azureKeyVault:Core:ClientId"], builtConfig["azureKeyVault:Core:ClientSecret"]),
-                                new DefaultKeyVaultSecretManager());
+                configurationBuilder.AddAzureKeyVault(keyCoreVaultAddress,
+                                    InitKeyVault(keyCoreVaultAddress, builtConfig["azureKeyVault:Core:ClientId"], builtConfig["azureKeyVault:Core:ClientSecret"]),
+                                    new DefaultKeyVaultSecretManager());
+            }
             //}
         }
         public static KeyVaultClient InitKeyVault(string keyVaultAddress,string clientID, string clientSecret)

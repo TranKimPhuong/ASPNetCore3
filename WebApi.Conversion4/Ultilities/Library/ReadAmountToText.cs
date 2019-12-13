@@ -1,4 +1,4 @@
-﻿namespace WebApi.Conversion4.Models.Library
+﻿namespace WebApi.Conversion4.Ultilities.Library
 {
     internal class ReadAmountToText
     {

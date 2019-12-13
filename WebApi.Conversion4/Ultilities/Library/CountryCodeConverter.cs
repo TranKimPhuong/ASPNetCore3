@@ -2,10 +2,9 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Xml.Serialization;
 
-namespace WebApi.Conversion4.Models.Library
+namespace WebApi.Conversion4.Ultilities.Library
 {
     public sealed class CountryCodeConverter
     {
@@ -25,7 +24,7 @@ namespace WebApi.Conversion4.Models.Library
         {
             string projectDir =
                 Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            var path = Path.Join(projectDir, @"\ConvertFiels\CountryCode.xml");
+            var path = Path.Join(projectDir, @"\DataFiles\CountryCode.xml");
 
             if (!File.Exists(path))
             {

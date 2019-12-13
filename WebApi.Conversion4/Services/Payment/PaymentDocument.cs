@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebApi.Common.Helper;
+using WebApi.Conversion4.Ultilities.Helper;
 using WebApi.Conversion4.Models.Data.Maps;
 using WebApi.Conversion4.Models.Data.Provider;
-using WebApi.Conversion4.Models.Library;
+using WebApi.Conversion4.Ultilities.Library;
 
 namespace WebApi.Conversion4.Services.Payment
 {

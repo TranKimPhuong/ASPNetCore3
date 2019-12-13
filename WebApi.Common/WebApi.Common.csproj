@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Config\MultipartFormDataMemoryStreamProvider.cs" />
-    <Compile Remove="Config\WebApiFilter.cs" />
+    <Compile Remove="Helper\**" />
+    <EmbeddedResource Remove="Helper\**" />
+    <None Remove="Helper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Helper\AESHelper.cs" />
+    <Compile Include="Helper\AppHelper.cs" />
+    <Compile Include="Helper\BaseDao.cs" />
+    <Compile Include="Helper\BlobHelper.cs" />
+    <Compile Include="Helper\ConfigHelper.cs" />
+    <Compile Include="Helper\MessageHelper.cs" />
   </ItemGroup>
 
   <ItemGroup>

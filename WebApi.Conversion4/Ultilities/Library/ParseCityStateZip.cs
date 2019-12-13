@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 
-namespace WebApi.Conversion4.Models.Library
+namespace WebApi.Conversion4.Ultilities.Library
 {
     internal static class ParseCityStateZip
     {
@@ -20,7 +20,7 @@ namespace WebApi.Conversion4.Models.Library
             List<Province> result;
             string projectDir =
                Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            var path = Path.Join(projectDir, @"\XMLs\provinces.json");
+            var path = Path.Join(projectDir, @"\DataFiles\provinces.json");
             string value = File.ReadAllText(path);
 
             result = JsonConvert.DeserializeObject<List<Province>>(value);

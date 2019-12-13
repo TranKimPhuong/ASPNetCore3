@@ -18,35 +18,35 @@
 		=> using Web.Common.Helper
 
 1. Add keyVault vào Program.cs => done
-	Install Microsoft.Azure.Services.AppAuthentication
-			Microsoft.Azure.KeyVault
+	Install Microsoft.Azure.KeyVault
 			Microsoft.Extensions.Configuration.AzureKeyVault
 
 	Issue1: need to re-enter credentical_ lúc này ko lấy đc thông tin của KeyVault
 	Solved: Tool\options\Azure Services Authentication
 
-	Issue2: làm sao get 1 insatnce for DBConnectionServerName, ServiceBusAccessKey, 
+	Issue2: làm sao get 1 instance for DBConnectionServerName, ServiceBusAccessKey, 
 			ServiceBusAccessKeyName, ServiceBusNamespace, StorageAccountKey, StorageAccountName
-
-	do GetVaultKeyName() trong VaultBase.cs  
+	=> do GetVaultKeyName() trong VaultBase.cs 
 	=> DA DONE TREN NET CORE 3, keyvault and core keyvault
 
 
-2. Use Serilog => partial, phan log to Azure chua test
+2. Use Serilog: https://stackify.com/asp-net-core-logging-what-changed/
+=> partial, phan log to Azure chua test
 	Install 
 			Serilog.AspNetCore
-			Serilog.Sinks.AzureTableStorage
+			Serilog.Sinks.AzureApp
 
 3. Create update vendor/export payment file + call IConfiguration từ another class
-=> đang làm cai nay tai sao xai basedao?
-
-
+ Install 
+		WindowAzure.Storage
+		Microsoft.Data.SqlClient (don't use System.Data.SqlClient anymore)
 
 
 DA RUN DC MASTER AND PAYMENT, 
-chưa call đc paymentAPI from postman
 chưa apply required fields for standard files
-
+chua log tren azure dc
+	// serilog or Nlog 
+	// must enable 'Diagnostic logs' to write into Log Stream => phai lam sao????
 
 
 

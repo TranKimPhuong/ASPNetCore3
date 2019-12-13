@@ -3,16 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.WindowsAzure.Storage;
 using Serilog;
-using Serilog.Events;
 using System;
-using System.Globalization;
 using System.IO;
-using System.Text;
-using WebApi.Conversion4.Models.Data;
-using WebApi.Conversion4.Services.MasterData;
 using WebApi.Conversion4.Services.Payment;
+using WebApi.Conversion4.Ultilities.Config;
+using WebApi.Conversion4.Ultilities.KeyVault;
 
 namespace WebApi.Conversion4
 {
@@ -44,22 +40,11 @@ namespace WebApi.Conversion4
                 logger.WriteTo.File(path, outputTemplate: "[{Timestamp:G} {Level:u3}] [{SourceContext}] {Message}{NewLine:1}{Exception:1}");
             }
             else
-            {// chưa test
-                var prefixTable = AppDomain.CurrentDomain.FriendlyName;
-                if (!string.IsNullOrEmpty(prefixTable))
-                {
-                    if (prefixTable.StartsWith("WebApi.", StringComparison.OrdinalIgnoreCase))
-                        prefixTable = prefixTable.Replace("WebApi.", "Local");
-                    else
-                        prefixTable = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(prefixTable);
-                }
-
-                var tblName = new StringBuilder(prefixTable);
-                tblName.Append(now.ToString("'Log'yyyyMMdd"));
-
-                var storageAccount = CloudStorageAccount.Parse(logConnectionString);
-                  logger.WriteTo.AzureTableStorage(storageAccount, LogEventLevel.Information, storageTableName: tblName.ToString());
-            }
+            {
+                // serilog or Nlog 
+                // must enable 'Diagnostic logs' to write into Log Stream 
+                logger.WriteTo.AzureApp(Serilog.Events.LogEventLevel.Verbose, outputTemplate : "{ Message}{ NewLine}{ Exception}");
+            }      
 
             Log.Logger = logger.CreateLogger();
 
@@ -96,7 +81,7 @@ namespace WebApi.Conversion4
                 endpoints.MapControllers();
             });
 
-            //Debug();
+            Debug();
         }
 
         public void Debug()

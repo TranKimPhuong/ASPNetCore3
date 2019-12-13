@@ -1,24 +1,29 @@
-﻿using WebApi.Common.Helper;
-using WebApi.Common.KeyVault;
+﻿using WebApi.Conversion4.Ultilities.Config;
+using WebApi.Conversion4.Ultilities.Helper;
+using WebApi.Conversion4.Ultilities.KeyVault;
 
 namespace WebApi.Conversion4.Models.Data
 {
     internal class DbServiceFactory
     {
+
+        const string SITE_NAME_MARK = "{SiteName}";
+        const string DB_SERVER_NAME_MARK = "{DBConnectionServerName}";
+
         internal static BaseDao GetDao(string sitename)
         {
-            string connectionString = Vault.Current.CreateCustomerDbConnectionString(sitename);
-            return new BaseDao(connectionString, Vault.Current.DBConnectionUserName, Vault.Current.DBConnectionPassword);
+            string connectionString = AzureKeyVaultProvider.DBConnectionStringTemplate?.Replace(SITE_NAME_MARK, sitename).Replace(DB_SERVER_NAME_MARK, AzureKeyVaultProvider.DBConnectionServerName);
+            return new BaseDao(connectionString, AzureKeyVaultProvider.DBConnectionUserName, AzureKeyVaultProvider.DBConnectionPassword);
         }
         internal static BaseDao GetCurrent()
         {
-            var siteName = ConfigHelper.GetString("SiteName");
+            var siteName = ConversionConfig.GetValue("SiteName");
             return GetDao(siteName);
         }
 
         internal static BaseDao GetDao(string dbName, string userName, string password)
         {
-            string connectionString = Vault.Current.CreateCustomerDbConnectionString(dbName);
+            string connectionString = AzureKeyVaultProvider.DBConnectionStringTemplate?.Replace(SITE_NAME_MARK, dbName).Replace(DB_SERVER_NAME_MARK, AzureKeyVaultProvider.DBConnectionServerName);
             return new BaseDao(connectionString, userName, password);
         }
     }

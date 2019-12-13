@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
-using log4net;
-using Microsoft.Extensions.Configuration;
 using Serilog;
-using WebApi.Common.Helper;
-using WebApi.Common.Models;
-using WebApi.Conversion4.Models.Data;
+using WebApi.Conversion4.Ultilities.Helper;
+using WebApi.Conversion4.Models;
 using WebApi.Conversion4.Models.Data.Provider;
+using WebApi.Conversion4.Ultilities.KeyVault;
 
 namespace WebApi.Conversion4.Services.Payment
 {
