@@ -1,0 +1,177 @@
+2019-12-19 09:29:33.4908 Info Message Template Auto Format enabled
+2019-12-19 09:29:33.5225 Info Loading assembly: NLog.Web.AspNetCore
+2019-12-19 09:29:33.5315 Info Loading assembly: NLog.Extensions.AzureStorage
+2019-12-19 09:29:33.6287 Info Adding target FileTarget(Name=file)
+2019-12-19 09:29:33.6287 Info Adding target ConsoleTarget(Name=console)
+2019-12-19 09:29:33.6406 Info Adding target BlobStorageTarget(Name=AzureBlobStorage)
+2019-12-19 09:29:33.7037 Info Found 33 configuration items
+2019-12-19 09:29:36.5112 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: This feature is not currently supported by the Storage Emulator.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.InitializeBlob(String blobName)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:06852893-c048-4478-8d8d-b94ff14b894f
+RequestDate:Thu, 19 Dec 2019 09:29:36 GMT
+StatusMessage:This feature is not currently supported by the Storage Emulator.
+ErrorCode:FeatureNotSupportedByEmulator
+ErrorMessage:This feature is not currently supported by the Storage Emulator.
+RequestId:06852893-c048-4478-8d8d-b94ff14b894f
+Time:2019-12-19T02:29:36.4480912Z
+
+2019-12-19 09:29:37.3519 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:0f51fe42-16eb-4fbd-b5bc-7d8a1def9594
+RequestDate:Thu, 19 Dec 2019 09:29:37 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:37.3745 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:11760d51-2b27-433b-bde5-f7bb25fda3e4
+RequestDate:Thu, 19 Dec 2019 09:29:37 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:37.4297 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:fb0ee440-328c-4515-bd64-62793b4787cc
+RequestDate:Thu, 19 Dec 2019 09:29:37 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:37.4835 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:d84c4829-70a8-4288-921a-96323879ea6d
+RequestDate:Thu, 19 Dec 2019 09:29:37 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:37.5385 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:6e1476ca-0f57-438b-91aa-eb9c8237490f
+RequestDate:Thu, 19 Dec 2019 09:29:37 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:39.6168 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:37216833-50de-4956-acd6-c17a1a1dd5ea
+RequestDate:Thu, 19 Dec 2019 09:29:39 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:39.6763 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:9f8862f9-871d-41f2-8d51-058737452453
+RequestDate:Thu, 19 Dec 2019 09:29:39 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:39.7311 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:7d9d950f-da44-4f80-ade4-b882a6bb5312
+RequestDate:Thu, 19 Dec 2019 09:29:39 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:39.7740 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:8dfd15b1-8a5f-4601-9f16-4798447247b8
+RequestDate:Thu, 19 Dec 2019 09:29:39 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:40.8609 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:29947f60-e4ee-43ea-89c0-661ca8c62933
+RequestDate:Thu, 19 Dec 2019 09:29:40 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:40.9078 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:483c14e3-2ada-4e51-be19-79ba3c98bc39
+RequestDate:Thu, 19 Dec 2019 09:29:40 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:40.9336 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:2462b96b-a839-4f08-819e-c261808d027e
+RequestDate:Thu, 19 Dec 2019 09:29:40 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
+2019-12-19 09:29:40.9524 Error AzureBlobStorageTarget: failed writing to blob: log-2019-12-19.tsjson in container: logs Exception: Microsoft.WindowsAzure.Storage.StorageException: The specified blob does not exist.
+   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.OpenWriteAsync(Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+   at Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob.UploadFromStreamAsyncHelper(Stream source, Nullable`1 length, Boolean createNew, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, AggregatingProgressIncrementer progressIncrementer, CancellationToken cancellationToken)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.AppendBlobFromByteArray(String blobName, Byte[] buffer)
+   at NLog.Extensions.AzureStorage.BlobStorageTarget.Write(LogEventInfo logEvent)
+Request Information
+RequestID:80808a0a-9dde-4486-a8f8-8e396ea02c1a
+RequestDate:Thu, 19 Dec 2019 09:29:40 GMT
+StatusMessage:The specified blob does not exist.
+ErrorCode:BlobNotFound
+
