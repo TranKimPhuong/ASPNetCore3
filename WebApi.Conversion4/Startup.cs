@@ -6,9 +6,11 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.IO;
-using WebApi.Conversion4.Services.Payment;
+using System.Text;
 using WebApi.Conversion4.Ultilities.Config;
 using WebApi.Conversion4.Ultilities.KeyVault;
+using WebApi.ConversionNew.Services.CustomerA.MasterData;
+using WebApi.ConversionNew.Services.CustomerA.Payment;
 
 namespace WebApi.Conversion4
 {
@@ -86,21 +88,21 @@ namespace WebApi.Conversion4
 
         public void Debug()
         {
-            //var inputpath = @"E:\SaaS_ko up\Input for debug code\city of mount juliet\CityofMountJuliet_Vendors.xlsx";
-            //var inputfile = File.ReadAllBytes(inputpath);
-            //var conversion = new MasterDataPsTool();
-            //// register to read content of excel file
-            //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            //var result = conversion.ProcessDataFile(inputfile);
-            //File.WriteAllText(@"E:\SaaS_ko up\Input for debug code\city of mount juliet\Master.txt", result.ToString());
-
-            var inputpath = @"E:\SaaS_ko up\Input for debug code\city of mount juliet\Check Run 5-21-19";
+            var inputpath = @"C:\KP\MySampleProjects\ASPNetCoreAPI\Input files\CityofMountJuliet_Vendors.xlsx";
             var inputfile = File.ReadAllBytes(inputpath);
-            var conversion = new PaymentPsTool();
+            var conversion = new CustomerASupplierPsTool();
             // register to read content of excel file
-            //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var result = conversion.ProcessDataFile(inputfile);
-            File.WriteAllText(@"E:\SaaS_ko up\Input for debug code\city of mount juliet\Payment.txt", result.ToString());
+            File.WriteAllText(@"C:\KP\MySampleProjects\ASPNetCoreAPI\Input files\Master.txt", result.ToString());
+
+            //var inputpath = @"E:\SaaS_ko up\Input for debug code\city of mount juliet\Check Run 5-21-19";
+            //var inputfile = File.ReadAllBytes(inputpath);
+            //var conversion = new CustomerAPaymentPsTool();
+            //// register to read content of excel file
+            ////Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            //var result = conversion.ProcessDataFile(inputfile);
+            //File.WriteAllText(@"E:\SaaS_ko up\Input for debug code\city of mount juliet\Payment.txt", result.ToString());
 
         }
     }

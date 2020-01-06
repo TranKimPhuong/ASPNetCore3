@@ -24,7 +24,7 @@ namespace WebApi.Conversion4.Ultilities.Library
         {
             string projectDir =
                 Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            var path = Path.Join(projectDir, @"\DataFiles\CountryCode.xml");
+            var path = Path.Join(projectDir, @"\ExternalData\CountryCode.xml");
 
             if (!File.Exists(path))
             {

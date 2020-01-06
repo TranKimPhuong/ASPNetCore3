@@ -10,3 +10,6 @@ WebApp.SerilogDemo/bin
 WebApp.SerilogDemo/obj
 WebApp.LoggingBasicAndAdvanceDemo/bin
 WebApp.LoggingBasicAndAdvanceDemo/obj
+/WebApi.NLogDemo/bin
+/WebApi.NLogDemo/obj
+/WebApi.ConversionBasic/bin/Debug/netcoreapp3.1

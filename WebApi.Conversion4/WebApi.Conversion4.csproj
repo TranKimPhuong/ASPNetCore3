@@ -5,14 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models1\**" />
     <Compile Remove="NewFolder\**" />
+    <Compile Remove="Services1\**" />
+    <Content Remove="Models1\**" />
     <Content Remove="NewFolder\**" />
+    <Content Remove="Services1\**" />
+    <EmbeddedResource Remove="Models1\**" />
     <EmbeddedResource Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Services1\**" />
+    <None Remove="Models1\**" />
     <None Remove="NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Services\Payment\MultiPaymentFileConversionService.cs" />
+    <None Remove="Services1\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +27,10 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.AzureApp" Version="2.1.2" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\CustomerB\" />
   </ItemGroup>
 
 </Project>

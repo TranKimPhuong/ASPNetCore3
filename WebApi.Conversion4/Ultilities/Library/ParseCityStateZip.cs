@@ -20,7 +20,7 @@ namespace WebApi.Conversion4.Ultilities.Library
             List<Province> result;
             string projectDir =
                Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            var path = Path.Join(projectDir, @"\DataFiles\provinces.json");
+            var path = Path.Join(projectDir, @"\ExternalData\provinces.json");
             string value = File.ReadAllText(path);
 
             result = JsonConvert.DeserializeObject<List<Province>>(value);
