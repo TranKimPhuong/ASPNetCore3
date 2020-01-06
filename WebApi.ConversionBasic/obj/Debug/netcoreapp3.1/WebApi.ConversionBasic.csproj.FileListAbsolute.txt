@@ -1,0 +1,11 @@
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\bin\Debug\netcoreapp3.1\appsettings.json
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\bin\Debug\netcoreapp3.1\WebApi.ConversionBasic.exe
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\WebApi.ConversionBasic.csprojAssemblyReference.cache
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\staticwebassets\WebApi.ConversionBasic.StaticWebAssets.Manifest.cache
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\staticwebassets\WebApi.ConversionBasic.StaticWebAssets.xml
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\WebApi.ConversionBasic.AssemblyInfoInputs.cache
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\WebApi.ConversionBasic.AssemblyInfo.cs
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\WebApi.ConversionBasic.RazorTargetAssemblyInfo.cache
+C:\KP\MySampleProjects\ASPNetCoreAPI\Conversion\WebApi.Conversion4\WebApi.ConversionBasic\obj\Debug\netcoreapp3.1\WebApi.ConversionBasic.MvcApplicationPartsAssemblyInfo.cache
